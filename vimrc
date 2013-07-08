@@ -3,15 +3,6 @@ set nocompatible
 call pathogen#infect()
 call pathogen#helptags()
 
-let mapleader=","
-let g:mapleader=","
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quick editing vimrc file
-map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
-autocmd! bufwritepost .vimrc source ~/.vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " NeoBundle
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -24,6 +15,23 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'shougo/vimproc'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'L9'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/VimClojure'
+NeoBundle 'terryma/vim-smooth-scroll'
+NeoBundle 'altercation/vim-colors-solarized'
+
+let mapleader=","
+let g:mapleader=","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quick editing vimrc file
+map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+autocmd! bufwritepost .vimrc source ~/.vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set backspace=eol,start,indent
 set backspace=2 "make backspace work like other apps
@@ -91,9 +99,10 @@ set foldlevelstart=99
 set noshowmode
 " Column width indicator
 set colorcolumn=+1
-
+" ; to :
 nnoremap ; :
-nmap <silent> ,/ :nohlsearch<CR>
+" quickly for nohlsearch
+nmap <silent> <leader>/ :silent :nohlsearch<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
