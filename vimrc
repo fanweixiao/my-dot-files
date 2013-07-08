@@ -89,9 +89,11 @@ set foldlevelstart=99
 
 " No need to show mode due to Powerline
 set noshowmode
-
 " Column width indicator
 set colorcolumn=+1
+
+nnoremap ; :
+nmap <silent> ,/ :nohlsearch<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -104,7 +106,8 @@ augroup END
 
 set wildmode=list:longest,full
 set wildmenu "turn on wild menu
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildig; :
+nnoremap <leader>/ :nohlsearch<CR>nore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*DS_Store*
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
