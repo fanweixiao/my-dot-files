@@ -1,0 +1,16 @@
+# Rime default settings
+# encoding: utf-8
+
+patch:
+    "menu/page_size": 5
+
+    punctuator/full_shape:
+        "[" : "["
+        "]" : "]"
+        "{" : "｛"
+        "}" : "｝"
+    punctuator/half_shape:
+        "[" : "["
+        "]" : "]"
+        "{" : "{"
+        "}" : "}"

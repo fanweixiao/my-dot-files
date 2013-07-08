@@ -1,0 +1,18 @@
+Host ntgit
+  HostName 192.168.1.31
+  User git
+
+Host niting
+  HostName niting.com
+  User root
+  ServerAliveInterval 30
+
+Host wpdang-web
+  HostName 122.70.130.31
+  User root
+  ServerAliveInterval 30
+
+Host wpdang-db
+  HostName 122.70.133.13
+  User root
+  ServerAliveInterval 30

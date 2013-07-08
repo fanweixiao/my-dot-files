@@ -1,0 +1,7 @@
+.netrwhist
+.DS_Store
+tmux-MacOSX-pasteboard
+gnome-terminal-colors-solarized
+vim-multiple-cursors
+vim/bundle/*
+!vim/bundle/neobundle

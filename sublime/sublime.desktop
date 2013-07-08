@@ -1,0 +1,17 @@
+# /usr/share/applications/sublime.desktop
+[Desktop Entry]
+Version=Dev
+Name=SublimeText2
+GenericName=Text Editor
+
+Exec=/home/fanweixiao/sublime/sublime_text
+Terminal=false
+Icon=/home/fanweixiao/Downloads/sublimeText2Icon/st2_icon_128.png
+Type=Application
+Categories=TextEditor;IDE;Development
+X-Ayatana-Desktop-Shortcuts=NewWindow
+
+[NewWindow Shortcut Group]
+Name=New Window
+Exec=/home/fanweixiao/sublime/sublime_text -n
+TargetEnvironment=Unity

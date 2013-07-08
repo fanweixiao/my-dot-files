@@ -1,0 +1,68 @@
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+shopt -s progcomp
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/_config/bash_aliases ]; then
+  source ~/_config/bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
+fi
+
+
+# ====== customized by C.C.
+parse_git_branch(){
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+export PS1="\[\e[0;36m\]\u\[\e[m\]\[\e[0;31m\]@\[\e[m\]\[\e[0;35m\]\h\[\e[m\]:\[\e[0;33m\]\W\[\e[m\]\[\e[m\]\[\e[0;32m\]\$(parse_git_branch)\[\e[m\]\[\e[0;31m\]$\[\e[m\] "
+# ===================
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+if [ -f ~/_config/gitcompletion.bash ]; then
+  source ~/_config/gitcompletion.bash
+fi
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+for f in $(command ls ~/_config/node-completion); do
+  f="$HOME/_config/node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
+
+# tmux completion
+if [ -f ~/_config/bash_completion_tmux.sh ]; then
+  source ~/_config/bash_completion_tmux.sh
+fi
+
+if [ -d /usr/local/sbin ]; then
+  PATH=$PATH:/usr/local/sbin
+fi
+
+# /opt path
+if [ -d $HOME/.rvm/bin ]; then
+  PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
+if [ -d /opt/bin ]; then
+  PATH=$PATH:/opt/bin
+fi

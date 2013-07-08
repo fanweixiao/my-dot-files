@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+echo "Start installer"
+#rm -rf ~/_config
+#git clone git@github.com:fanweixiao/Configures.git ~/_config
+
+if [ -d ~/.vim ]; then
+  echo "removing .vim"
+  rm -rf ~/.vim
+fi
+if [ -f ~/.vimrc ]; then
+  echo "removing .vimrc"
+  rm -rf ~/.vimrc
+fi
+if [ -f ~/.gitconfig ]; then
+  echo "removing .gitconfig"
+  rm -rf ~/.gitconfig
+fi
+if [ -f ~/.gvimrc ]; then
+  echo "removing .gvimrc"
+  rm -rf ~/.gvimrc
+fi
+if [ -f ~/.gemrc ]; then
+  echo "removing .gemrc"
+  rm -rf ~/.gemrc
+fi
+if [ -f ~/.rvmrc ]; then
+  echo "removing .rvmrc"
+  rm -rf ~/.rvmrc
+fi
+if [ -f ~/.Xresources ]; then
+  echo "removing .Xresources"
+  rm -rf ~/.Xresources
+fi
+
+ln -s ~/_config/vim ~/.vim
+ln -s ~/_config/vimrc ~/.vimrc
+ln -s ~/_config/gvimrc ~/.gvimrc
+ln -s ~/_config/gitconfig ~/.gitconfig
+ln -s ~/_config/gitignore ~/.gitignore
+ln -s ~/_config/gemrc ~/.gemrc
+ln -s ~/_config/rvmrc ~/.rvmrc
+ln -s ~/_config/Xresources ~/.Xresources
+
+#source ~/.bashrc
+echo "Done"
