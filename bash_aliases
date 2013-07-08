@@ -16,4 +16,3 @@ alias gvim='gvim -f'
 alias tree='tree -a'
 alias dstat='dstat --tcp -cglmnpry'
 alias s='git status'
-

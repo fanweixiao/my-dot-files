@@ -44,10 +44,12 @@ if [ -d /opt/bin ]; then
   PATH=$PATH:/opt/bin
 fi
 
-# add dircolors
-# curl https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark > ~/.dircolors
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if [[ "$unamestr" != "Darwin" ]]; then
+  echo 'loading dircolor'
+  # curl https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark > ~/.dircolors
+  if [ -x /usr/bin/dircolors ]; then
+    test -r ~/_config/dircolors && eval "$(dircolors -b ~/_config/dircolors)" || eval "$(dircolors -b)"
+  fi
 fi
 
 # add /usr/local/sbin
