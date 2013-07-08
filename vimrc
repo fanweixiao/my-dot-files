@@ -1,5 +1,13 @@
 set nocompatible
 
+let mapleader=","
+let g:mapleader=","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quick editing vimrc file
+map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+autocmd! bufwritepost .vimrc source ~/.vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -17,21 +25,11 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'L9'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'altercation/vim-colors-solarized'
-
-let mapleader=","
-let g:mapleader=","
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quick editing vimrc file
-map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
-autocmd! bufwritepost .vimrc source ~/.vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set backspace=eol,start,indent
 set backspace=2 "make backspace work like other apps
@@ -115,8 +113,7 @@ augroup END
 
 set wildmode=list:longest,full
 set wildmenu "turn on wild menu
-set wildig; :
-nnoremap <leader>/ :nohlsearch<CR>nore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*DS_Store*
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
@@ -141,11 +138,6 @@ nmap <leader>w <esc>:w<cr>
 map <leader>full <esc>:set columns=200<cr>
 
 noremap <C-k><C-d> <Esc>gg=G
-
-nnoremap <leader>1 :set filetype=xhtml<cr>
-nnoremap <leader>2 :set filetype=css<cr>
-nnoremap <leader>3 :set filetype=javascript<cr>
-nnoremap <leader>4 :set filetype=ruby<cr>
 
 set shortmess=atl
 set tags=tags;
