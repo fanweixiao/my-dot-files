@@ -30,6 +30,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-markdown'
 
 set backspace=eol,start,indent
 set backspace=2 "make backspace work like other apps
