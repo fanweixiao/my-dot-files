@@ -1,4 +1,4 @@
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s progcomp
 export HISTSIZE=3000

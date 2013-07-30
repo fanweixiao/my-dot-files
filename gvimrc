@@ -12,7 +12,7 @@ elseif has("win32")
   behave mswin
   autocmd GUIEnter * simalt ~x
 else
-  set guifont=Menlo\ for\ Powerline:h14   
+  set guifont=Menlo\ for\ Powerline:h12   
 endif
 "autocmd InsertLeave * se nocul
 "autocmd InsertEnter * se cul

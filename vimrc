@@ -71,7 +71,7 @@ set showmode
 set mouse=a
 set selectmode=mouse,key
 set sessionoptions+=resize
-set clipboard+=unnamed
+" set clipboard+=unnamed
 set fileformats=unix,dos
 set laststatus=2
 set cmdheight=1

@@ -1,5 +1,4 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"draw_white_space": "all",
 	"find_selected_text": true,
 	"fold_buttons": false,
@@ -12,7 +11,7 @@
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 13.0,
+	"font_size": 12.0,
 	"highlight_line": true,
 	"hot_exit": false,
 	"ignored_packages":
@@ -21,7 +20,6 @@
 	],
 	"remember_open_files": false,
 	"tab_size": 2,
-	"theme": "Soda Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }

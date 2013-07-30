@@ -5,4 +5,4 @@
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
  '("marmalade" . "http://marmalade-repo.org/packages/"))
-(load-theme 'solarized-[light|dark] t)
+(load-theme 'solarized-light t)
