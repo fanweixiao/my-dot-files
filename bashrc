@@ -4,7 +4,7 @@ shopt -s progcomp
 export HISTSIZE=3000
 export HISTFILESIZE=2000
 export HISTIGNORE="&:ls:cd ~:cd ..:history:[ ]*"
-# export PROMPT_COMMAND="history -a"
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
@@ -24,7 +24,6 @@ ORANGE=$"\[\e[36m\]"
 export PS1="\n${ORANGE}\u${D}${RED}@${D}${PINK}\h${D}:${GREEN}\w${D}${ORANGE}\$(parse_git_branch)${D}\v${PINK}*\j${D}${RED}\$${D}"
 # ==================
 
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 if [ -f ~/_config/gitcompletion.bash ]; then
   source ~/_config/gitcompletion.bash
@@ -44,17 +43,17 @@ if [ -d /opt/bin ]; then
   PATH=$PATH:/opt/bin
 fi
 
+# add /usr/local/sbin
+if [ -d /usr/local/sbin ]; then
+  PATH=/usr/local/sbin:$PATH
+fi
+
 if [[ "$unamestr" != "Darwin" ]]; then
   echo 'loading dircolor'
   # curl https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark > ~/.dircolors
   if [ -x /usr/bin/dircolors ]; then
     test -r ~/_config/dircolors && eval "$(dircolors -b ~/_config/dircolors)" || eval "$(dircolors -b)"
   fi
-fi
-
-# add /usr/local/sbin
-if [ -d /usr/local/sbin ]; then
-  PATH=/usr/local/sbin:$PATH
 fi
 
 # RVM
