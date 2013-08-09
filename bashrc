@@ -56,6 +56,16 @@ if [[ "$unamestr" != "Darwin" ]]; then
   fi
 fi
 
+# add /usr/local/sbin
+if [ -d /usr/local/sbin ]; then
+  PATH=/usr/local/sbin:$PATH
+fi
+
+# add /usr/local/sbin
+if [ -d ~/bin ]; then
+  PATH=~/bin:$PATH
+fi
+
 # RVM
 if [ -d $HOME/.rvm/bin ]; then
   PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

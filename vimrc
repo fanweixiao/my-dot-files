@@ -31,6 +31,7 @@ NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'AndrewRadev/splitjoin.vim'
 
 set backspace=eol,start,indent
 set backspace=2 "make backspace work like other apps
