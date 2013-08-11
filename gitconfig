@@ -1,61 +1,60 @@
 [user]
-	name = fanweixiao
-	email = fanweixiao@gmail.com
+  name = fanweixiao
+  email = fanweixiao@gmail.com
 [core]
   whitespace = cr-at-eol
-	excludesfile = /Users/CC/.gitignore_global
+  excludesfile = /Users/CC/.gitignore_global
 [color]
-	ui = true
+  ui = true
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 [diff]
-	renames = copies
-	mnemonicprefix = true
+  renames = copies
+  mnemonicprefix = true
 [push]
-	default = tracking
+  default = tracking
 [merge]
-	stat = true
+  stat = true
 [alias]
-	# View the SHA, description, and history graph of the latest 20 commits
-	l = log --graph --oneline --decorate --date-order --color --boundary @{u}..
-	# View the current working tree status using the short format
-	s = status -s -b
-	# Diff
-	d = diff --stat
-	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull	 # ; git submodule foreach git pull origin master"
-	# Clone a repository including all submodules
-	c = clone --recursive
-	# Commit all changes
-	ca = commit -a
-	# Switch to a branch, creating it if necessary
-	go = checkout -B
-	# Undo a `git push`
-	undopush = push -f origin HEAD^:master
-	# Pretty log
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %an)%Creset' --abbrev-commit --date=relative -20
-	# use vimdiff as difftool
-	df = difftool -t vimdiff
+  # View the SHA, description, and history graph of the latest 20 commits
+  l = log --graph --oneline --decorate --date-order --color --boundary @{u}..
+  # View the current working tree status using the short format
+  s = status -s -b
+  # Diff
+  d = diff --stat
+  # Pull in remote changes for the current repository and all its submodules
+  p = !"git pull	 # ; git submodule foreach git pull origin master"
+  # Clone a repository including all submodules
+  c = clone --recursive
+  # Commit all changes
+  ca = commit -a
+  # Switch to a branch, creating it if necessary
+  go = checkout -B
+  # Undo a `git push`
+  undopush = push -f origin HEAD^:master
+  # Pretty log
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %an)%Creset' --abbrev-commit --date=relative -20
+  # use vimdiff as difftool
+  df = difftool -t vimdiff
   # Get a list of branches ordered by most recent commit
   latest = "for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)'"
-	
-	#Simple shortcuts.
-	st = status
-	ci = commit
-	co = checkout
-	br = branch
-	g = grep --break --heading --line-number
+  #Simple shortcuts.
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  g = grep --break --heading --line-number
 [apply]
-	whitespace = fix
+  whitespace = fix
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [grep]
-	lineNumber = true
+  lineNumber = true
