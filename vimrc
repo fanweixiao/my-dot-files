@@ -8,16 +8,16 @@ let g:mapleader=","
 map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
 autocmd! bufwritepost .vimrc source ~/.vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
 call pathogen#infect()
 call pathogen#helptags()
+filetype plugin indent on
 
-" NeoBundle
+" Configure NeoBundle
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-
 call neobundle#rc(expand('~/.vim/bundle/'))
-
 NeoBundleFetch 'shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'shougo/vimproc'
@@ -33,8 +33,15 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'jnwhiteh/vim-golang'
+NeoBundle 'wincent/Command-T'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'uarun/vim-protobuf'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'mileszs/ack.vim'
 
-set backspace=eol,start,indent
+"set backspace=eol,start,indent
+set autoindent
+set autoread
 set backspace=2 "make backspace work like other apps
 set whichwrap+=<,>,h,l,[,],b,s
 set ignorecase
@@ -42,7 +49,7 @@ set smartcase
 set hlsearch
 set nolazyredraw
 set magic "Set magic on, for regular expressions
-set showmatch 
+set showmatch
 set mat=2 "How many tenths of a second to blink
 set noerrorbells
 set novisualbell
@@ -56,24 +63,22 @@ set tw=500
 set ai
 set si
 set wrap
-set tabstop=2
+set tabstop=8
 set softtabstop=2
 set shiftwidth=2
 set history=200
-"set autoread
-set encoding=utf8
+set encoding=utf-8
 set ffs=unix,dos,mac
 set hidden
-"backup
 set nobackup
 set nowb
 set noswapfile
 set showcmd
-set showmode
+"set showmode     "Cause powerline, don't need this
 set mouse=a
 set selectmode=mouse,key
 set sessionoptions+=resize
-" set clipboard+=unnamed
+set clipboard=unnamed
 set fileformats=unix,dos
 set laststatus=2
 set cmdheight=1
@@ -86,15 +91,16 @@ set ttyfast
 set splitright
 set splitbelow
 set fcs=vert:│
+
 " Display unprintable chars
 set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set listchars=tab:▸\ ,trail:▫
 set showbreak=↪
 
-set scrolloff=10
+set scrolloff=4
 " Open all folds initially
-set foldmethod=indent
-set foldlevelstart=99
+"set foldmethod=indent
+"set foldlevelstart=99
 
 " No need to show mode due to Powerline
 set noshowmode
@@ -114,21 +120,31 @@ augroup MyAutoCmd
   autocmd BufWinLeave * if &modifiable && &ft!='unite' | call clearmatches() | endif
 augroup END
 
-set wildmode=list:longest,full
+set wildmode=list:longest,list,full
 set wildmenu "turn on wild menu
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*DS_Store*
 set wildignore+=vendor/rails/**
 set wildignore+=vendor/cache/**
 set wildignore+=*.gem
-set wildignore+=log/**
+set wildignore+=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=*/.nx/**,*.app
 
+if exists('$TMUX')
+  set ttymouse=xterm2
+  set clipboard+=unnamed
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
 setlocal noswapfile
-syntax on
+syntax enable
 filetype on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -176,13 +192,11 @@ function! SwitchToBuf(filename)
 endfunction
 
 "================NERDTree===============
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <leader>n :NERDTreeToggle<cr>
-nnoremap <Leader>cd :cd %:p:h<cr>:pwd<cr>
-
-map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#") . " BG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"bg#")<CR>
-:au BufRead, BufNewFile *.css set ft=css syntax=css3
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
+let g:NERDSpaceDelims=1
+nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>f :NERDTreeFind<cr>
 
 " for Markdown
 map <leader>md :%!/usr/local/bin/Markdown.pl > %.html<cr>
@@ -191,7 +205,6 @@ map <leader>md :%!/usr/local/bin/Markdown.pl > %.html<cr>
 let g:Powerline_symbols = 'fancy'
 
 " for tabularize plug-in
-let mapleader=','
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
   vmap <Leader>a= :Tabularize /=<CR>
@@ -201,6 +214,11 @@ endif
 
 " Clipboard
 let g:gist_clip_command='pbcopy'
+
+" Command-T
+let g:CommandTMaxHeight=20
+let g:gitgutter_enable=0
+let g:ackprg='ag --nogroup --column'
 
 " sable moving with arrow keys
 nnoremap <up> <nop>
@@ -226,8 +244,6 @@ cnoremap <C-e> <end>
 noremap <leader>r :%s/
 vnoremap <leader>r "+y:%s/\V<C-r>+
 
-imap <C-j> <C-n>
-
 " insert mode move cursor like emacs 
 imap <C-f> <C-o>l
 imap <C-b> <C-o>h
@@ -236,7 +252,7 @@ imap <C-p> <C-o>gk
 
 imap <C-k> <C-o>d$
 imap <C-d> <C-o>x
-imap <C-u> <C-o>d0
+imap <C-u> <C-o>d0<C-o>x
 imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 
@@ -246,23 +262,27 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
+nnoremap <Leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" filetypes
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
 " multiple-cursors
 let g:multi_cursor_start_key='<C-0>'
 let g:multi_cursor_quit_key='<ESC>'
 
-" clear highlights on Ctrl-L
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Plugin Settings
+map <leader>l :Align
+nmap <leader>a :Ack
+nmap <leader>b :CommandTBuffer<CR>
+nmap <leader>t :CommandT<CR>
+nmap <leader>T :CommandTFlush<CR>:CommandT<CR>
 
-"""""" Nerdtree
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=2 
 " auto-enable spellcheck for certain filetypes
 if has('spell')
   au Filetype markdown setlocal spell
 endif
-
-""""" Enable NeoBundle
-NeoBundleCheck
 
 set background=dark
 set t_md= "Disable bold font in bash
@@ -270,6 +290,10 @@ set t_Co=256
 let g:solarized_termcolors=256
 colo solarized
 
-if $TMUX == ''
-  set clipboard+=unnamed
+if filereadable(expand("~/_config/vimrc.local"))
+  source ~/_config/vimrc.local
 endif
+
+" Enable NeoBundle
+NeoBundleCheck
+

@@ -11,18 +11,18 @@
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 12.0,
+	"font_size": 14.0,
 	"highlight_line": true,
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
 		"JavaScript",
-		"Pretty JSON"
+		"Pretty JSON",
+		"Vintage"
 	],
 	"remember_open_files": false,
 	"tab_size": 2,
-	"theme": "ProKit.sublime-theme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }
