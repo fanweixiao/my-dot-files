@@ -4,7 +4,7 @@
 [core]
   whitespace = cr-at-eol
   excludesfile = /Users/CC/.gitignore_global
-  editor = im
+  editor = vim
 [color]
   ui = true
 [color "status"]
