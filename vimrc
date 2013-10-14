@@ -40,6 +40,7 @@ NeoBundle 'uarun/vim-protobuf'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'corntrace/bufexplorer'
+NeoBundle 'nanotech/jellybeans.vim'
 
 "set backspace=eol,start,indent
 set autoindent

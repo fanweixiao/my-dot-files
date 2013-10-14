@@ -4,8 +4,8 @@ set lines=80
 set columns=200
 set background=light
 if has("gui_gtk2")
-  " set guifont=Ubuntu\ Mono\ 11
-  set guifont=Ubuntu\ Mono\ for\ Powerline\ 11
+  set guifont=Inconsolata-dz\ 10
+  " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
 elseif has("win32")  
   echo "win32"
   set guifont=Consolas:h10
