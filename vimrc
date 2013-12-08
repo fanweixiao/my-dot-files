@@ -66,7 +66,7 @@ set tw=500
 set ai
 set si
 set wrap
-set tabstop=8
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set history=200

@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",
+	"color_scheme": "Packages/Theme - Aqua/Color Schemes/Tomorrow Aqua.tmTheme",
 	"draw_white_space": "all",
 	"find_selected_text": true,
 	"fold_buttons": false,
@@ -17,8 +17,8 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"JavaScript",
 		"Pretty JSON",
+		"JavaScript",
 		"Vintage"
 	],
 	"remember_open_files": false,
