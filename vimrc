@@ -41,6 +41,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'corntrace/bufexplorer'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'vim-scripts/sudo.vim'
 
 "set backspace=eol,start,indent
 set autoindent
@@ -287,7 +288,7 @@ if has('spell')
   au Filetype markdown setlocal spell
 endif
 
-set background=dark
+" set background=dark
 set t_md= "Disable bold font in bash
 set t_Co=256
 let g:solarized_termcolors=256
