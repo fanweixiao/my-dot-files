@@ -18,8 +18,8 @@
 	"ignored_packages":
 	[
 		"Pretty JSON",
-		"JavaScript",
-		"Vintage"
+		"Vintage",
+		"JavaScript"
 	],
 	"remember_open_files": false,
 	"tab_size": 2,
